@@ -14,14 +14,15 @@ exports.authenticateUser = async (req, res) => {
     const {email, password} = req.body;
 
     try{
+
         let user = await User.findOne({email})
         if(!user) {
-            return res.status(400).json({ message: 'El usuario no existe'});
+            return res.status(400).json({ message: 'El usuario no se encuentra registrado'});
         }
 
         const correctPassword = await bcryptjs.compare(password, user.password);
         if(!correctPassword){
-            return res.status(400).json({message: 'Password Incorrecto'})
+            return res.status(400).json({message: 'Contraseña incorrecta'})
         }
 
         const payload = {
@@ -41,5 +42,16 @@ exports.authenticateUser = async (req, res) => {
 
     }catch(error){
         console.log(error);
+    }
+}
+
+exports.userAuthenticated = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select('-password');
+        res.json({user})
+
+    }catch (error) {
+        console.log(error);
+        res.status(500).json({message: 'Hubo un error'});
     }
 }

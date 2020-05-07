@@ -58,7 +58,7 @@ exports.create = async (req, res) => {
        
 }
 
-exports.details = function (req, res, next){
+/*exports.details = function (req, res, next){
    
     User.findById(req.params.id, function(error, user){
         if(error)
@@ -92,4 +92,4 @@ exports.index = function (req, res, next){
             return next(error);
         res.send(users)
     });
-}
+} */

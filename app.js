@@ -10,8 +10,12 @@ var usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth');
 
 const db = require('./config/mongoose');
+const cors = require('cors')
 
 var app = express();
+
+//Allow cors
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
