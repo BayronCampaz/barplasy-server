@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Center = require('../models/Center');
 const bcryptjs = require('bcryptjs')
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken')
@@ -11,11 +12,17 @@ exports.authenticateUser = async (req, res) => {
         return res.status(400).json({errors: errors.array()})
     }
 
-    const {email, password} = req.body;
+    const {email, password, role} = req.body;
 
     try{
+        let user = ''
 
-        let user = await User.findOne({email})
+        if(role === 'user'){
+            user = await User.findOne({email})
+        }else if(role === 'center'){
+            user = await Center.findOne({email})
+        }
+
         if(!user) {
             return res.status(400).json({ message: 'El usuario no se encuentra registrado'});
         }
@@ -47,7 +54,12 @@ exports.authenticateUser = async (req, res) => {
 
 exports.userAuthenticated = async (req, res) => {
     try {
-        const user = await User.findById(req.user.id).select('-password');
+        let user = '';
+             user = await User.findById(req.user.id).select('-password');
+        if(!user){
+             user = await Center.findById(req.user.id).select('-password');
+        }
+
         res.json({user})
 
     }catch (error) {

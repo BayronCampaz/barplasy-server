@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Center = require('../models/Center');
 const bcryptjs = require('bcryptjs')
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken')
@@ -18,15 +19,21 @@ exports.create = async (req, res) => {
 
         let user = await User.findOne({email})
         if(user){
-            return res.status(400).json({ message: 'El usuario ya existe'});
+            return res.status(400).json({ message: 'El usuario ya se encuentra registrado'});
+        }
+        user = await Center.findOne({email})
+        if(user){
+            return res.status(400).json({ message: 'El usuario ya se encuentra registrado como centro de belleza'});
         }
 
+        
         user = new User (
             {
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password,
-                cellphone: req.body.cellphone
+                cellphone: req.body.cellphone,
+                role: 'user'
             }
         )
 

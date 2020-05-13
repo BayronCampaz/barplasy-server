@@ -6,6 +6,7 @@ let UserSchema = new Schema ({
     email: {type: String, required: true, trim: true, unique:true},
     password: {type: String, required: true, trim: true},
     cellphone: {type: String, required: true, trim: true},
+    role: {type: String, required:true, trim: true},
     register: {type: Date, default: Date.now}
     
 })
