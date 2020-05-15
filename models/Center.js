@@ -12,6 +12,7 @@ let CenterSchema = new Schema ({
     banner: {type: String, trim: true},
     image:{type: String, trim: true},
     role: {type: String, required:true, trim: true},
+    typeSchedule: {type: String},
     location: { address : {type : String}, latitude : {type : Schema.Types.Decimal128}, longitude : {type : Schema.Types.Decimal128}  },
     register: {type: Date, default: Date.now}
     

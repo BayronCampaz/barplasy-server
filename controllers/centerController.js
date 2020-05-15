@@ -71,3 +71,14 @@ exports.create = async (req, res) => {
     }
        
 }
+
+
+exports.index = async (req, res) => {
+    try {
+        const centers = await Center.find().sort({ name: -1 });
+        res.json({ centers });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Hubo un error');
+    }
+}
