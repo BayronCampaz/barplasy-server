@@ -8,12 +8,13 @@ let CenterSchema = new Schema ({
     ownerId: {type: String, required: true, trim: true},
     ownerName: {type: String, required: true, trim: true},
     cellphone: {type: String, required: true, trim: true},
-    decimal: {type: Schema.Types.Decimal128},
+    types: [String],
+    score: {type: Number},
     banner: {type: String, trim: true},
     image:{type: String, trim: true},
     role: {type: String, required:true, trim: true},
     typeSchedule: {type: String},
-    location: { address : {type : String}, latitude : {type : Schema.Types.Decimal128}, longitude : {type : Schema.Types.Decimal128}  },
+    location: { city: {type: String}, address : {type : String}, latitude : {type : Schema.Types.Decimal128}, longitude : {type : Schema.Types.Decimal128}  },
     register: {type: Date, default: Date.now}
     
 })

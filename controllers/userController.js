@@ -25,7 +25,6 @@ exports.create = async (req, res) => {
         if(user){
             return res.status(400).json({ message: 'El usuario ya se encuentra registrado como centro de belleza'});
         }
-
         
         user = new User (
             {

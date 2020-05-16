@@ -11,11 +11,11 @@ router.post('/', auth, [
 ], serviceController.create);
 
 router.get('/', serviceController.index);
+router.delete('/:id', serviceController.delete);
+router.put('/:id', serviceController.update);
 
-/*
-router.get('/:id', centerController.details);
-router.get('/:id', centerController.details);
-router.put('/:id', centerController.update);
-router.delete('/:id', centerController.delete);*/
+
+//router.get('/:id', centerController.details);
+
 
 module.exports = router;

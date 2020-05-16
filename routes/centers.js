@@ -11,6 +11,7 @@ router.post('/', auth, [
 ], centerController.create);
 
 router.get('/', centerController.index);
+router.get('/:id', centerController.details);
 
 /*
 router.get('/:id', centerController.details);

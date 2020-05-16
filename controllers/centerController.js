@@ -72,6 +72,15 @@ exports.create = async (req, res) => {
        
 }
 
+exports.details = function (req, res, next){
+   
+    Center.findById(req.params.id, function(error, center){
+        if(error)
+            return next(error);
+        res.send(center)
+    });
+}
+
 
 exports.index = async (req, res) => {
     try {
