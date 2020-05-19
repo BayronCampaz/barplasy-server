@@ -8,7 +8,6 @@ let CenterSchema = new Schema ({
     ownerId: {type: String, required: true, trim: true},
     ownerName: {type: String, required: true, trim: true},
     cellphone: {type: String, required: true, trim: true},
-    types: [String],
     score: {type: Number},
     banner: {type: String, trim: true},
     image:{type: String, trim: true},

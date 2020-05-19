@@ -10,9 +10,10 @@ router.post('/', auth, [
     check('description', 'El password debe ser minimo de 6 caracteres').isLength({min:6})
 ], serviceController.create);
 
-router.get('/', serviceController.index);
-router.delete('/:id', serviceController.delete);
-router.put('/:id', serviceController.update);
+router.get('/', auth, serviceController.index);
+router.delete('/:id', auth, serviceController.delete);
+router.put('/:id', auth, serviceController.update);
+router.get('/:id', auth, serviceController.details);
 
 
 //router.get('/:id', centerController.details);

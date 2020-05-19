@@ -68,6 +68,15 @@ exports.update = function (req, res, next){
     });
 }
 
+exports.details = function (req, res, next){
+   
+    Service.findById(req.params.id, function(error, user){
+        if(error)
+            return next(error);
+        res.send(user)
+    });
+}
+
 /*exports.update = async (req, res ) => {
     try {
 

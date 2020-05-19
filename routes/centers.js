@@ -10,8 +10,8 @@ router.post('/', auth, [
     check('password', 'El password debe ser minimo de 6 caracteres').isLength({min:6})
 ], centerController.create);
 
-router.get('/', centerController.index);
-router.get('/:id', centerController.details);
+router.get('/', auth, centerController.index);
+router.get('/:id',auth, centerController.details);
 
 /*
 router.get('/:id', centerController.details);
