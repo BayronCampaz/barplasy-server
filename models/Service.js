@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let ServiceSchema = new Schema ({
-    centerId: { type: mongoose.Schema.Types.ObjectId,
+    center: { type: mongoose.Schema.Types.ObjectId,
                 ref: 'Center', 
                 required: true, 
                 trim: true},

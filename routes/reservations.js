@@ -7,11 +7,11 @@ const auth = require('../middleware/auth');
 router.post('/', auth, reservationController.create);
 router.get('/',auth, reservationController.index);
 router.put('/:id', auth, reservationController.update);
+router.delete('/:id',auth, reservationController.delete);
 
 /*
 router.get('/:id', centerController.details);
-router.get('/:id', centerController.details);
+*/
 
-router.delete('/:id', centerController.delete);*/
 
 module.exports = router;

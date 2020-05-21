@@ -26,6 +26,7 @@ exports.create = async (req, res) => {
             return res.status(400).json({ message: 'El correo se encuentra enlazado a un usuario'});
         }
 
+
         center = new Center (
             {
                 name: req.body.name,
@@ -35,11 +36,11 @@ exports.create = async (req, res) => {
                 ownerName: req.body.ownerName,
                 cellphone: req.body.cellphone,
                 decimal: 0.0,
-                banner: '',
-                image:'',
+                banner: "https://blog.agendapro.com/hubfs/centro%20de%20belleza%20vac%C3%ADo.png",
+                image: "https://cms.modumb.com/storage/magazine/_800x422/5-trucos-y-consejos-para-no-equivocarte-al-elegir-un-curso-de-peluqueria.jpg",
                 role:'center',
                 location: { 
-                    address : 'Cra 33 # 43 - 34', 
+                    address : req.body.address, 
                     latitude : -70.555, 
                     longitude : 0.5484  }
             });

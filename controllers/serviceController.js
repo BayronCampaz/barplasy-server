@@ -16,7 +16,7 @@ exports.create = async (req, res) => {
 
         service = new Service (
             {
-                centerId: req.user.id,
+                center: req.user.id,
                 type: req.body.type,
                 name: req.body.name,
                 description: req.body.description,
@@ -26,7 +26,7 @@ exports.create = async (req, res) => {
 
         await service.save();
 
-        const services = await Service.find({ centerId: req.user.id }).sort({ name: -1 });
+        const services = await Service.find({ center: req.user.id }).sort({ name: -1 });
         res.json({ services });
 
 
@@ -41,7 +41,7 @@ exports.create = async (req, res) => {
 exports.index = async (req, res) => {
     try {
 
-        const services = await Service.find({centerId: req.query.centerId}).sort({ name: -1 });
+        const services = await Service.find({center: req.query.centerId}).sort({ name: -1 });
         res.json({ services });
     } catch (error) {
         console.log(error);
@@ -59,8 +59,7 @@ exports.delete = function (req, res, next){
 }
 
 exports.update = function (req, res, next){
-   console.log(req.params.id)
-   console.log(req.body)
+
     Service.findByIdAndUpdate(req.params.id, { $set: req.body} ,function(error, service){
         if(error)
             return next(error);
